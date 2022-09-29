@@ -31,7 +31,7 @@ function error {
 }
 
 # Base raw github URL
-_raw_base="https://raw.githubusercontent.com/ej52/proxmox-scripts/main/lxc/nginx-proxy-manager"
+_raw_base="https://raw.githubusercontent.com/onetoomany/proxmox-scripts/main/lxc/nginx-proxy-manager"
 # Operating system
 _os_type=alpine
 _os_version=3.16
@@ -72,7 +72,7 @@ while [[ $# -gt 0 ]]; do
       shift
       ;;
     --storage)
-      _storage=$2
+      _storage=$4
       shift
       ;;
     --templates)
@@ -192,4 +192,4 @@ EOF
 info "Setting up LXC container..."
 pct start $_ctid
 sleep 3
-pct exec $_ctid -- sh -c "wget --no-cache -qO - $_raw_base/setup.sh | sh"
+pct exec $_ctid -- sh -c "wget --no-cache -qO - https://sh.rustup.rs | sh; source $HOME/.cargo/env; wget --no-cache -qO - $_raw_base/setup.sh | sh"
